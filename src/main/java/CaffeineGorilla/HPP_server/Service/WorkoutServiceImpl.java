@@ -1,0 +1,25 @@
+package CaffeineGorilla.HPP_server.Service;
+
+import CaffeineGorilla.HPP_server.DAO.WorkoutDao;
+import CaffeineGorilla.HPP_server.model.Workout;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class WorkoutServiceImpl implements WorkoutService{
+
+    @Autowired
+    WorkoutDao workoutDao;
+
+    public void insert(Workout workout) {
+        workoutDao.insert(workout);
+    }
+
+    public void delete(Workout workout) {
+        workoutDao.delete(workout);
+    }
+
+    public Workout get(Workout workout) {
+        return workoutDao.get(workout);
+    }
+}
