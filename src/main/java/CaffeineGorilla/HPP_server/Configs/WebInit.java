@@ -26,8 +26,8 @@ public class WebInit extends AbstractAnnotationConfigDispatcherServletInitialize
     }
 
     @Override
-    protected String[] getServletMappings() {
-        return new String[]{"/*"};
+    protected String[] getServletMappings(){
+        return new String[]{"/"};
     }
 
 }

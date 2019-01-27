@@ -14,18 +14,18 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @ComponentScan(basePackages = {"CaffeineGorilla.HPP_server"})
 public class WebConfig extends WebMvcConfigurerAdapter {
 
-    @Bean
-    public ViewResolver viewResolver(){
-        ViewResolver viewResolver = new InternalResourceViewResolver();
-        ((InternalResourceViewResolver) viewResolver).setPrefix("/WEB-INF/classes/views");
-        ((InternalResourceViewResolver) viewResolver).setSuffix(".jsp");
-
-        return viewResolver;
-    }
-
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**")
                 .addResourceLocations("classpath:static/");
+    }
+
+    @Bean
+    public ViewResolver viewResolver(){
+        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+        viewResolver.setPrefix("/WEB-INF/classes/views/");
+        viewResolver.setSuffix(".jsp");
+
+        return viewResolver;
     }
 }
