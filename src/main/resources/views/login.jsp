@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: jeon
-  Date: 19. 1. 20
-  Time: 오후 6:11
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -17,17 +10,16 @@
     <script src="http://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
 </head>
 <body>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">HPP</a>
-        </div>
-        <div>
-            <ul class="nav navbar-nav">
-                <li><a href="/login">login</a> </li>
-            </ul>
+<div class="container">
+    <div class="jumbotron">
+        <div class="form-group center-block" style="width: 300px">
+            <form action="/api/login" method="post">
+                <input class="form-control" type="text" name="email" placeholder="email"/>
+                <input class="form-control" type="password" name="password" placeholder="Password"/>
+                <input class="btn btn-primary btn-block" type="submit" value="로그인"/>
+            </form>
         </div>
     </div>
-</nav>
+</div>
 </body>
 </html>

@@ -5,14 +5,14 @@
 <mapper namespace="user">
     <insert id="insert" parameterType="user">
         <![CDATA[
-          INSERT INTO user(ID,PASSWORD)
-          VALUES (#{id},#{password})
+          INSERT INTO user(email,password)
+          VALUES (#{email},#{password})
         ]]>
     </insert>
 
     <select id="get" resultType="user">
         <![CDATA[
-          SELECT * FROM user WHERE id = #{id}
+          SELECT * FROM user WHERE email = #{email}
         ]]>
     </select>
 
