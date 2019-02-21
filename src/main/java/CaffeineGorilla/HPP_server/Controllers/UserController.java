@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -54,13 +56,8 @@ public class UserController {
     public User get(@PathVariable String id){
         User request = new User();
         request.setId(id);
-        User user = userService.get(request);
+        Optional<User> user = Optional.ofNullable(userService.get(request));
 
-        if(null == user){
-            user = new User();
-            user.setId(Integer.toString(-1));
-        }
-
-        return user;
+        return user.orElse(new User());
     }
 }
