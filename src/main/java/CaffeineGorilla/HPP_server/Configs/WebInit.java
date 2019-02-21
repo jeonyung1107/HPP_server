@@ -1,6 +1,7 @@
 package CaffeineGorilla.HPP_server.Configs;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.Filter;
@@ -12,7 +13,9 @@ public class WebInit extends AbstractAnnotationConfigDispatcherServletInitialize
         characterEncodingFilter.setEncoding("UTF-8");
         characterEncodingFilter.setForceEncoding(true);
 
-        return new Filter[]{characterEncodingFilter};
+        DelegatingFilterProxy delegatingFilterProxy = new DelegatingFilterProxy();
+
+        return new Filter[]{characterEncodingFilter, delegatingFilterProxy};
     }
 
     @Override

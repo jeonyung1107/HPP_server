@@ -4,6 +4,7 @@ import CaffeineGorilla.HPP_server.Service.UserService;
 import CaffeineGorilla.HPP_server.model.User;
 import CaffeineGorilla.HPP_server.utils.PasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,7 +18,7 @@ public class UserController {
     UserService userService;
 //    TODO 검증자 인터페이스 추가할 것
     @Autowired
-PasswordEncoder passwordEncrytor;
+    PasswordEncoder passwordEncrytor;
 
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public String insert(User user){
@@ -29,6 +30,8 @@ PasswordEncoder passwordEncrytor;
 
         try {
             userService.insert(user);
+        }catch (DuplicateKeyException e){
+            return "email already exists";
         }catch (Exception e){
             return e.getMessage();
         }
