@@ -13,10 +13,11 @@
 <div class="container">
     <div class="jumbotron">
         <div class="form-group center-block" style="width: 300px">
-            <form action="/api/login" method="post">
+            <form action="/login" method="post">
                 <input class="form-control" type="text" name="email" placeholder="email"/>
                 <input class="form-control" type="password" name="password" placeholder="Password"/>
                 <input class="btn btn-primary btn-block" type="submit" value="로그인"/>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
         </div>
     </div>
