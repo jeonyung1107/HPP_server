@@ -1,6 +1,6 @@
 package CaffeineGorilla.HPP_server.DAO;
 
-import CaffeineGorilla.HPP_server.model.User;
+import CaffeineGorilla.HPP_server.model.UserDetail;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -11,15 +11,7 @@ public class UserDao {
     @Autowired
     SqlSessionTemplate sqlSessionTemplate;
 
-    public void insertUser(User user){
-        sqlSessionTemplate.insert("user.insert", user);
-    }
-
-    public void deleteUser(User user){
-        sqlSessionTemplate.delete("user.delete", user);
-    }
-
-    public User getUser(User user){
-        return sqlSessionTemplate.selectOne("user.get", user);
+    public UserDetail getUserById(String id){
+        return sqlSessionTemplate.selectOne("user.get", id);
     }
 }

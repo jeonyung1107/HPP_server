@@ -1,6 +1,7 @@
 CREATE TABLE IF NOT EXISTS user(
-	id integer auto_increment,
-	email varchar(100) not null unique,
+	id varchar(100) not null unique,
 	password char(60) not null,
-	primary key (id, email)
+	authority char(60) not null,
+	enabled boolean not null default true,
+	primary key (id)
 )

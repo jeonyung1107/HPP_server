@@ -1,5 +1,7 @@
 package CaffeineGorilla.HPP_server.Configs;
 
+import CaffeineGorilla.HPP_server.DAO.UserDao;
+import CaffeineGorilla.HPP_server.Service.UserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,6 +27,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         manager.createUser(User.withUsername("admin").password(bCryptPasswordEncoder.encode("1234")).roles("ADMIN").build());
         UserDetails userDetails = manager.loadUserByUsername("admin");
         return manager;
+    }
+
+    @Bean
+    public UserDetailsService jdbcUserDetailService(){
+        UserDetailsService userDetailsService = new UserDetailService();
+        return userDetailsService;
+    }
+
+    @Bean
+    public UserDao userDao(){
+        return new UserDao();
     }
 
     @Override
