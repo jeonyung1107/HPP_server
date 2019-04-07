@@ -2,6 +2,7 @@ package CaffeineGorilla.HPP_server.Configs;
 
 import CaffeineGorilla.HPP_server.DAO.UserDao;
 import CaffeineGorilla.HPP_server.Service.UserDetailService;
+import CaffeineGorilla.HPP_server.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,18 +22,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Bean
-    @Override
-    public UserDetailsService userDetailsService() {
-        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-        manager.createUser(User.withUsername("admin").password(bCryptPasswordEncoder.encode("1234")).roles("ADMIN").build());
-        UserDetails userDetails = manager.loadUserByUsername("admin");
-        return manager;
-    }
-
-    @Bean
-    public UserDetailsService jdbcUserDetailService(){
-        UserDetailsService userDetailsService = new UserDetailService();
-        return userDetailsService;
+    public UserService userService() {
+//        manager.createUser(User.withUsername("admin").password(bCryptPasswordEncoder.encode("1234")).roles("ADMIN").build());
+        return new UserDetailService();
     }
 
     @Bean
@@ -43,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/login", "/static/**").permitAll()
+                .antMatchers("/", "/login", "/static/**","/user/add").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
         .and()

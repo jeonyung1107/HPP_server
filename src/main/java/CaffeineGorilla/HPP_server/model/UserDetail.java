@@ -28,6 +28,23 @@ public class UserDetail implements UserDetails {
         return password;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setPassword(String password) {
+
+        this.password = password;
+    }
+
+    public void setAuthority(String authority) {
+        this.authority = authority;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
     @Override
     public String getUsername() {
         return id;

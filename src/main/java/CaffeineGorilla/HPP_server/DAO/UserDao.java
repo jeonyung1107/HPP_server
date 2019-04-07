@@ -14,4 +14,12 @@ public class UserDao {
     public UserDetail getUserById(String id){
         return sqlSessionTemplate.selectOne("user.get", id);
     }
+
+    public void insertUser(UserDetail userDetail){
+        sqlSessionTemplate.insert("user.insert", userDetail);
+    }
+
+    public void deleteUser(UserDetail userDetail){
+        sqlSessionTemplate.delete("user.delete", userDetail);
+    }
 }

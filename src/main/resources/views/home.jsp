@@ -26,6 +26,9 @@
             <ul class="nav navbar-nav">
                 <li><a href="/login">login</a> </li>
             </ul>
+            <ul class="nav navbar-nav">
+                <li><a href="/user/add">user</a> </li>
+            </ul>
         </div>
     </div>
 </nav>
