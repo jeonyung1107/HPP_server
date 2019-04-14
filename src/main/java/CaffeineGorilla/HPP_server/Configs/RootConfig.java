@@ -6,8 +6,10 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -17,15 +19,17 @@ import javax.sql.DataSource;
 import java.io.IOException;
 
 @Configuration
+@PropertySource("classpath:properties/database.properties")
 public class RootConfig {
 
     @Bean
-    public DataSource dataSource(){
+    public DataSource dataSource(@Value("${db.username}") String username, @Value("${db.password}")String password,
+                                 @Value("${db.driver}") String driver, @Value("${db.url}") String url){
         BasicDataSource basicDataSource = new BasicDataSource();
-        basicDataSource.setUsername("coff");
-        basicDataSource.setPassword("1234");
-        basicDataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        basicDataSource.setUrl("jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC");
+        basicDataSource.setUsername(username);
+        basicDataSource.setPassword(password);
+        basicDataSource.setDriverClassName(driver);
+        basicDataSource.setUrl(url);
 
         return basicDataSource;
     }
