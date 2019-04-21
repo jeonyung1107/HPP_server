@@ -5,3 +5,37 @@ CREATE TABLE IF NOT EXISTS user(
 	enabled boolean not null default true,
 	primary key (id)
 );
+
+CREATE TABLE IF NOT EXISTS muscle(
+	id char(10) primary key ,
+	name varchar(100) not null ,
+	parent char(10),
+	foreign key (parent) references muscle(id)
+);
+
+CREATE TABLE IF NOT EXISTS excercise(
+	id char(10) primary key ,
+	name varchar(100) not null ,
+	muscle char(10) not null ,
+	unit char(10),
+	foreign key (muscle) references muscle(id)
+);
+
+CREATE TABLE IF NOT EXISTS excercise_set(
+	id char(10) primary key ,
+	session char(16) not null ,
+	excercise char(10) not null ,
+	intensity int not null,
+	numberof int not null ,
+	foreign key (excercise) references excercise(id),
+	foreign key (session) references session(id)
+);
+
+CREATE TABLE IF NOT EXISTS session(
+	id char(16) primary key ,
+	start timestamp default current_timestamp,
+	end timestamp default current_timestamp on update current_timestamp
+);
+
+
+
