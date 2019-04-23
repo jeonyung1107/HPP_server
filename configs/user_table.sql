@@ -21,21 +21,31 @@ CREATE TABLE IF NOT EXISTS excercise(
 	foreign key (muscle) references muscle(id)
 );
 
-CREATE TABLE IF NOT EXISTS excercise_set(
-	id char(10) primary key ,
-	session char(16) not null ,
-	excercise char(10) not null ,
-	intensity int not null,
-	numberof int not null ,
-	foreign key (excercise) references excercise(id),
-	foreign key (session) references session(id)
-);
 
 CREATE TABLE IF NOT EXISTS session(
 	id char(16) primary key ,
 	start timestamp default current_timestamp,
 	end timestamp default current_timestamp on update current_timestamp
 );
+
+CREATE TABLE IF NOT EXISTS excercise_set(
+    id        char(10) primary key,
+    session   char(16) not null,
+    excercise char(10) not null,
+    intensity int      not null,
+    numberof  int      not null,
+    writtentime      timestamp default current_timestamp,
+    foreign key (excercise) references excercise (id),
+    foreign key (session) references session (id)
+);
+
+CREATE TABLE IF NOT EXISTS user_session(
+	user varchar(100),
+	session char(16),
+	primary key (user, session),
+	foreign key (user) references user(id),
+	foreign key (session) references session(id)
+)
 
 
 
