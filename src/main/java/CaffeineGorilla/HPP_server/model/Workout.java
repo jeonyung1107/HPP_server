@@ -6,6 +6,24 @@ import org.apache.ibatis.type.Alias;
 public class Workout {
     private String id;
     private String name;
+    private String muscle;
+    private String unit;
+
+    public String getMuscle() {
+        return muscle;
+    }
+
+    public void setMuscle(String muscle) {
+        this.muscle = muscle;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
 
     public String getId() {
         return id;
