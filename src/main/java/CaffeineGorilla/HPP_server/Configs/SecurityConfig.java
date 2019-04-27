@@ -23,13 +23,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public UserService userService() {
-//        manager.createUser(User.withUsername("admin").password(bCryptPasswordEncoder.encode("1234")).roles("ADMIN").build());
         return new UserDetailService();
     }
 
     @Bean
     public UserDao userDao(){
         return new UserDao();
+    }
+
+    @Override
+    protected UserDetailsService userDetailsService() {
+        return super.userDetailsService();
     }
 
     @Override

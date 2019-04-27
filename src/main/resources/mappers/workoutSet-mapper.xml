@@ -5,20 +5,20 @@
 <mapper namespace="workoutSet">
     <insert id="insert" parameterType="workoutSet">
         <![CDATA[
-          INSERT INTO workout(name, musclepart)
-          VALUES (#{name},#{musclePart})
+          INSERT INTO excercise_set(id, session, excercise, intensity, numberof)
+          VALUES (#{id}, #{session}, #{excercise}, #{intensity}, #{numberof})
         ]]>
     </insert>
 
-    <select id="get" resultType="workout">
+    <select id="get" resultType="workoutSet">
         <![CDATA[
-          SELECT * FROM workout WHERE name = #{name}
+          SELECT * FROM excercise_set WHERE id = #{id}
         ]]>
     </select>
 
     <delete id="delete">
         <![CDATA[
-          DELETE FROM workout WHERE id = #{id}
+          DELETE FROM excercise_set WHERE id = #{id}
         ]]>
     </delete>
 </mapper>
