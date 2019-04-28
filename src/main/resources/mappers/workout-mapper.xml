@@ -5,14 +5,14 @@
 <mapper namespace="workout">
     <insert id="insert" parameterType="workout">
         <![CDATA[
-          INSERT INTO workout(name, musclepart)
-          VALUES (#{name},#{musclePart})
+          INSERT INTO excercise(id, name, muscle, unit)
+          VALUES (#{id}, #{name}, #{muscle}, #{unit})
         ]]>
     </insert>
 
     <select id="get" resultType="workout">
         <![CDATA[
-          SELECT * FROM workout WHERE name = #{name}
+          SELECT * FROM workout WHERE id = #{id}
         ]]>
     </select>
 

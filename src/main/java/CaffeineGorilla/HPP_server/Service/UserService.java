@@ -6,6 +6,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import java.sql.SQLException;
 
 public interface UserService extends UserDetailsService {
-    public void insertUser(UserDetail userDetail) throws SQLException;
-    public void deleteUser(UserDetail userDetail) throws SQLException;
+    public void insertUser(UserDetail userDetail);
+    public void deleteUser(UserDetail userDetail);
 }

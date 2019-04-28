@@ -5,14 +5,14 @@
 <mapper namespace="usersession">
     <insert id="insert" parameterType="usersession">
         <![CDATA[
-          INSERT INTO user_session("user", "session")
-          VALUES (#{name},#{musclePart})
+          INSERT INTO user_session(user, session)
+          VALUES (#{user},#{session})
         ]]>
     </insert>
 
     <select id="get" resultType="usersession">
         <![CDATA[
-          SELECT * FROM user_session WHERE name = #{name}
+          SELECT * FROM user_session WHERE id = #{name}
         ]]>
     </select>
 
