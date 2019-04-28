@@ -1,4 +1,4 @@
-package CaffeineGorilla.HPP_server.workout;
+package CaffeineGorilla.HPP_server.workout.service;
 
 import CaffeineGorilla.HPP_server.model.Session;
 import com.sun.istack.internal.Nullable;

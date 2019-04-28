@@ -1,19 +1,17 @@
 package CaffeineGorilla.HPP_server.workout;
 
-import CaffeineGorilla.HPP_server.Service.UserDetailService;
 import CaffeineGorilla.HPP_server.model.Session;
-import CaffeineGorilla.HPP_server.model.UserDetail;
 import CaffeineGorilla.HPP_server.model.UserSession;
 import CaffeineGorilla.HPP_server.model.WorkoutSet;
+import CaffeineGorilla.HPP_server.workout.service.SessionService;
+import CaffeineGorilla.HPP_server.workout.service.UserSessionService;
+import CaffeineGorilla.HPP_server.workout.service.WorkoutSetService;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/api/set")

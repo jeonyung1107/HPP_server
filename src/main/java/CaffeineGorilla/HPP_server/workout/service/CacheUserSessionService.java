@@ -1,10 +1,9 @@
-package CaffeineGorilla.HPP_server.workout;
+package CaffeineGorilla.HPP_server.workout.service;
 
 
 import CaffeineGorilla.HPP_server.DAO.UserSessionDao;
 import CaffeineGorilla.HPP_server.model.UserSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 @Service

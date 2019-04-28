@@ -25,7 +25,7 @@ public class UserController {
     @ResponseBody
     public String addUser(UserDetail userDetail){
 
-        userDetail.setAuthority("USER");
+        userDetail.setAuthority("ROLE_USER");
         userDetail.setEnabled(true);
 
         userService.insertUser(userDetail);
