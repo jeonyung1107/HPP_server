@@ -1,4 +1,4 @@
-package CaffeineGorilla.HPP_server.DAO;
+package CaffeineGorilla.HPP_server.workout;
 
 import CaffeineGorilla.HPP_server.model.WorkoutSet;
 import org.mybatis.spring.SqlSessionTemplate;

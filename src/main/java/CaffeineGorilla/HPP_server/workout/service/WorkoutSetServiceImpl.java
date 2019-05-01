@@ -1,6 +1,6 @@
 package CaffeineGorilla.HPP_server.workout.service;
 
-import CaffeineGorilla.HPP_server.DAO.WorkoutSetDao;
+import CaffeineGorilla.HPP_server.workout.WorkoutSetDao;
 import CaffeineGorilla.HPP_server.model.WorkoutSet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

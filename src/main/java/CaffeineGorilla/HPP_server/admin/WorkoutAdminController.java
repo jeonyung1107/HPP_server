@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/admin/workout")
-public class WorkoutController {
+public class WorkoutAdminController {
 
     @Autowired
     WorkoutService workoutService;
