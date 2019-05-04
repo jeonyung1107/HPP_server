@@ -58,4 +58,16 @@ public class WorkoutSet {
     public void setWrittentime(String writtentime) {
         this.writtentime = writtentime;
     }
+
+    @Override
+    public String toString() {
+        return "WorkoutSet{" +
+                "id='" + id + '\'' +
+                ", session='" + session + '\'' +
+                ", excercise='" + excercise + '\'' +
+                ", intensity=" + intensity +
+                ", numberof=" + numberof +
+                ", writtentime='" + writtentime + '\'' +
+                '}';
+    }
 }

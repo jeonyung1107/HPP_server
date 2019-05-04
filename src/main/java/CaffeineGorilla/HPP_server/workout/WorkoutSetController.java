@@ -7,6 +7,8 @@ import CaffeineGorilla.HPP_server.workout.service.SessionService;
 import CaffeineGorilla.HPP_server.workout.service.UserSessionService;
 import CaffeineGorilla.HPP_server.workout.service.WorkoutSetService;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/set")
 public class WorkoutSetController {
+
+    private static Logger logger = LoggerFactory.getLogger(WorkoutSetController.class);
 
     @Autowired
     WorkoutSetService workoutSetService;
@@ -28,6 +32,7 @@ public class WorkoutSetController {
 
     @RequestMapping(method = RequestMethod.POST)
     public WorkoutSet writeWorkoutSet(WorkoutSet workoutSet){
+
         String userName = SecurityContextHolder.getContext().getAuthentication().getName();
         Session session = sessionService.getSession("");
 
@@ -41,6 +46,8 @@ public class WorkoutSetController {
         workoutSet.setId("test" + RandomStringUtils.randomAlphanumeric(6));
 
         workoutSetService.writeWorkoutSet(workoutSet);
+
+        logger.info(workoutSet.toString());
 
         return workoutSet;
     }
