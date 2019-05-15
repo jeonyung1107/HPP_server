@@ -20,6 +20,7 @@ import java.io.IOException;
 
 @Configuration
 @PropertySource("classpath:properties/database.properties")
+@MapperScan("CaffeineGorilla.HPP_server.mapper")
 public class RootConfig {
 
     @Bean

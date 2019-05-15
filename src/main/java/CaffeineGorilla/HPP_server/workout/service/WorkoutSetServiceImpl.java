@@ -18,7 +18,7 @@ public class WorkoutSetServiceImpl implements WorkoutSetService{
 
     @Override
     public WorkoutSet getWorkoutSet(String id) {
-        return null;
+        return workoutSetDao.getWorkoutSet(id);
     }
 
     @Override
