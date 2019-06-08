@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 @RequestMapping("/api/set")
 public class WorkoutSetController {
@@ -31,24 +32,12 @@ public class WorkoutSetController {
     UserSessionService userSessionService;
 
     @RequestMapping(method = RequestMethod.POST)
-    public WorkoutSet writeWorkoutSet(WorkoutSet workoutSet){
+    public WorkoutRequest.WorkoutSetRequest writeWorkoutSet(WorkoutRequest.WorkoutSetRequest workoutSetRequest){
 
-        String userName = SecurityContextHolder.getContext().getAuthentication().getName();
-        Session session = sessionService.getSession("");
+        workoutSetService.writeWorkoutSet(workoutSetRequest);
 
-        UserSession userSession = new UserSession();
-        userSession.setUser(userName);
-        userSession.setSession(session.getId());
+        logger.info(workoutSetRequest.toString());
 
-        userSessionService.insertUserSession(userSession);
-
-        workoutSet.setSession(session.getId());
-        workoutSet.setId("test" + RandomStringUtils.randomAlphanumeric(6));
-
-        workoutSetService.writeWorkoutSet(workoutSet);
-
-        logger.info(workoutSet.toString());
-
-        return workoutSet;
+        return workoutSetRequest;
     }
 }

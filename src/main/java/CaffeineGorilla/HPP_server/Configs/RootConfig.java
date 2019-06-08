@@ -12,8 +12,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 import java.io.IOException;
@@ -21,7 +24,11 @@ import java.io.IOException;
 @Configuration
 @PropertySource("classpath:properties/database.properties")
 @MapperScan("CaffeineGorilla.HPP_server.mapper")
+@EnableTransactionManagement
 public class RootConfig {
+
+    @Autowired
+    DataSource dataSource;
 
     @Bean
     public DataSource dataSource(@Value("${db.username}") String username, @Value("${db.password}")String password,
@@ -59,4 +66,10 @@ public class RootConfig {
     public BCryptPasswordEncoder bCryptPasswordEncoder(){
         return new BCryptPasswordEncoder();
     }
+
+    @Bean
+    public PlatformTransactionManager transactionManager(){
+        return new DataSourceTransactionManager(dataSource);
+    }
 }
+

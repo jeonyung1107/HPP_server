@@ -34,12 +34,15 @@ public class WorkoutSetControllerTest {
     static void initAll(){
     }
 
+    private String id = "testId";
+    private String excerciseName = "testtest01";
 
     @Test
     @DisplayName("work")
     void writeWorkoutSetTest(){
         WorkoutSet expected = new WorkoutSet();
         expected.setExcercise("testtest01");
+        expected.setId("testId");
 
         Mockito.when(workoutSetDao.getWorkoutSet("test2r9mEt")).thenReturn(expected);
 
