@@ -1,25 +1,13 @@
 package CaffeineGorilla.HPP_server.model;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.ibatis.type.Alias;
 
 @Alias("usersession")
+@Getter
+@Setter
 public class UserSession {
     private String user;
     private String session;
-
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public String getSession() {
-        return session;
-    }
-
-    public void setSession(String session) {
-        this.session = session;
-    }
 }
