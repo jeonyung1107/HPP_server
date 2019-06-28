@@ -4,21 +4,15 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="workout">
     <insert id="insert" parameterType="workout">
-        <![CDATA[
-          INSERT INTO excercise(id, name, muscle, unit)
-          VALUES (#{id}, #{name}, #{muscle}, #{unit})
-        ]]>
+      INSERT INTO workout(id, name, muscle, unit)
+      VALUES (#{id}, #{name}, #{muscle}, #{unit})
     </insert>
 
     <select id="get" resultType="workout">
-        <![CDATA[
-          SELECT * FROM workout WHERE id = #{id}
-        ]]>
+      SELECT * FROM workout WHERE id = #{id}
     </select>
 
     <delete id="delete">
-        <![CDATA[
-          DELETE FROM workout WHERE id = #{id}
-        ]]>
+      DELETE FROM workout WHERE id = #{id}
     </delete>
 </mapper>
