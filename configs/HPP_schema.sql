@@ -13,11 +13,6 @@ CREATE TABLE IF NOT EXISTS muscle(
 	foreign key (parent) references muscle(id)
 );
 
-INSERT into muscle(id, name) VALUES ("testmuscle", "testmuscle");
-INSERT into muscle(id, name) VALUES ("testtest01", "testmuscle2");
-INSERT into muscle(id, name) VALUES ("testparent", "testparetn");
-INSERT into muscle(id, name, parent) VALUES ("testchild1", "testchild01", "testparent");
-
 CREATE TABLE IF NOT EXISTS workout(
 	id char(10) primary key ,
 	name varchar(100) not null ,
@@ -25,11 +20,6 @@ CREATE TABLE IF NOT EXISTS workout(
 	unit char(10),
 	foreign key (muscle) references muscle(id)
 );
-
-INSERT INTO workout(id, name, muscle, unit) VALUES ("testtest01", "testtest01", "testmuscle", "KG");
-INSERT INTO workout(id, name, muscle, unit) VALUES ("testtest02", "testtest02", "testparent", "KG");
-INSERT INTO workout(id, name, muscle, unit) VALUES ("testtest03", "testtest03", "testchild1", "KG");
-
 
 CREATE TABLE IF NOT EXISTS session(
 	id char(16) primary key ,
