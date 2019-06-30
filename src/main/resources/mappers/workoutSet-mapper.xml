@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="workoutSet">
     <insert id="insert" parameterType="workoutSet">
-      INSERT INTO workout_set(id, session, excercise, intensity, numberof)
+      INSERT INTO workout_set(id, session, workout, intensity, numberof)
       VALUES (#{id}, #{session}, #{excercise}, #{intensity}, #{numberof})
     </insert>
 
