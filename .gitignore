@@ -1,4 +1,8 @@
-.idea/*
-out/*
-target/*
-*.iml
+*
+!src/
+!src/**
+!configs/
+!configs/**
+!.gitignore
+!pom.xml
+!README.md

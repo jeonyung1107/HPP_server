@@ -1,4 +1,4 @@
-package CaffeineGorilla.HPP_server.Controllers;
+package CaffeineGorilla.HPP_server.admin;
 
 import CaffeineGorilla.HPP_server.Service.WorkoutService;
 import CaffeineGorilla.HPP_server.model.Workout;
@@ -9,20 +9,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/workout")
-public class WorkoutController {
+@RequestMapping("/admin/workout")
+public class WorkoutAdminController {
 
     @Autowired
     WorkoutService workoutService;
 
-    @RequestMapping(value = "/insert", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public void insert(Workout workout){
         workoutService.insert(workout);
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public void delete(Workout workout){
-        workoutService.delete(workout);
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable String id){
+        Workout deleteTarget = new Workout();
+        deleteTarget.setId(id);
+        workoutService.delete(deleteTarget);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

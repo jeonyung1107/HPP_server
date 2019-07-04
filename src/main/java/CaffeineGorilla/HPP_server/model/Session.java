@@ -4,13 +4,11 @@ import lombok.Getter;
 import lombok.Setter;
 import org.apache.ibatis.type.Alias;
 
-@Alias("workout")
+@Alias("session")
 @Getter
 @Setter
-public class Workout {
+public class Session {
     private String id;
-    private String name;
-    private String muscle;
-    private String unit;
-    private String musclePart;
+    private String start;
+    private String end;
 }

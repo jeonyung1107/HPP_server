@@ -1,12 +1,11 @@
 package CaffeineGorilla.HPP_server.Service;
 
-import CaffeineGorilla.HPP_server.DAO.UserDao;
-import CaffeineGorilla.HPP_server.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import CaffeineGorilla.HPP_server.model.UserDetail;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
-public interface UserService {
+import java.sql.SQLException;
 
-    public void insert(User user);
-    public void delete(User user);
-    public User get(User user);
+public interface UserService extends UserDetailsService {
+    public void insertUser(UserDetail userDetail);
+    public void deleteUser(UserDetail userDetail);
 }

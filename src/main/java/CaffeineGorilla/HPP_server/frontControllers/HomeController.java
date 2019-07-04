@@ -1,4 +1,4 @@
-package CaffeineGorilla.HPP_server.Controllers;
+package CaffeineGorilla.HPP_server.frontControllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

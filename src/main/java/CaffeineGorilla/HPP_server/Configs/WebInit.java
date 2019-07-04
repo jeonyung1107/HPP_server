@@ -1,6 +1,7 @@
 package CaffeineGorilla.HPP_server.Configs;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.Filter;
@@ -17,7 +18,7 @@ public class WebInit extends AbstractAnnotationConfigDispatcherServletInitialize
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{RootConfig.class};
+        return new Class[]{RootConfig.class, SecurityConfig.class};
     }
 
     @Override
@@ -26,7 +27,7 @@ public class WebInit extends AbstractAnnotationConfigDispatcherServletInitialize
     }
 
     @Override
-    protected String[] getServletMappings(){
+    protected String[] getServletMappings() {
         return new String[]{"/"};
     }
 
