@@ -1,4 +1,4 @@
-package CaffeineGorilla.HPP_server.mapper;
+package CaffeineGorilla.HPP_server.stat.mapper;
 
 import CaffeineGorilla.HPP_server.stat.vo.DayIntensity;
 import org.apache.ibatis.annotations.Mapper;

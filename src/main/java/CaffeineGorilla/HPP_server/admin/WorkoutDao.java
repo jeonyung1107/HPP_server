@@ -1,6 +1,6 @@
 package CaffeineGorilla.HPP_server.admin;
 
-import CaffeineGorilla.HPP_server.model.Workout;
+import CaffeineGorilla.HPP_server.workout.model.Workout;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

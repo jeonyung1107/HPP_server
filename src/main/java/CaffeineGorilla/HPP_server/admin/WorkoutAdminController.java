@@ -1,7 +1,7 @@
 package CaffeineGorilla.HPP_server.admin;
 
-import CaffeineGorilla.HPP_server.Service.WorkoutService;
-import CaffeineGorilla.HPP_server.model.Workout;
+import CaffeineGorilla.HPP_server.workout.service.WorkoutService;
+import CaffeineGorilla.HPP_server.workout.model.Workout;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

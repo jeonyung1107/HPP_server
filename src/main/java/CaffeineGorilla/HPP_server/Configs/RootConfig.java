@@ -23,7 +23,7 @@ import java.io.IOException;
 
 @Configuration
 @PropertySource("classpath:properties/database.properties")
-@MapperScan("CaffeineGorilla.HPP_server.mapper")
+@MapperScan("CaffeineGorilla.HPP_server.stat.mapper")
 @EnableTransactionManagement
 public class RootConfig {
 

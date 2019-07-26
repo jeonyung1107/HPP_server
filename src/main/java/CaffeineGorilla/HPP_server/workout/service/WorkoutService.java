@@ -1,6 +1,6 @@
-package CaffeineGorilla.HPP_server.Service;
+package CaffeineGorilla.HPP_server.workout.service;
 
-import CaffeineGorilla.HPP_server.model.Workout;
+import CaffeineGorilla.HPP_server.workout.model.Workout;
 
 public interface WorkoutService {
     public void insert(Workout workout);

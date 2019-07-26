@@ -1,6 +1,6 @@
 package CaffeineGorilla.HPP_server.workout.service;
 
-import CaffeineGorilla.HPP_server.model.WorkoutSet;
+import CaffeineGorilla.HPP_server.workout.model.WorkoutSet;
 import CaffeineGorilla.HPP_server.workout.WorkoutRequest;
 import org.springframework.stereotype.Service;
 

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="CaffeineGorilla.HPP_server.mapper.DayStatMapper">
+<mapper namespace="CaffeineGorilla.HPP_server.stat.mapper.DayStatMapper">
     <select id="getDayIntensity" parameterType="user">
         SELECT DATE(writtentime) day, sum(intensity * numberof) intensity from workout_set JOIN user_session ON session WHERE user = #{id} group by DATE(writtentime);
     </select>
