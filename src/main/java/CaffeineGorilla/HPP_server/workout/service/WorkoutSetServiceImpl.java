@@ -2,9 +2,9 @@ package CaffeineGorilla.HPP_server.workout.service;
 
 import CaffeineGorilla.HPP_server.workout.model.Session;
 import CaffeineGorilla.HPP_server.workout.model.UserSession;
-import CaffeineGorilla.HPP_server.workout.UserSessionDao;
+import CaffeineGorilla.HPP_server.workout.mapper.UserSessionDao;
 import CaffeineGorilla.HPP_server.workout.WorkoutRequest;
-import CaffeineGorilla.HPP_server.workout.WorkoutSetDao;
+import CaffeineGorilla.HPP_server.workout.mapper.WorkoutSetDao;
 import CaffeineGorilla.HPP_server.workout.model.WorkoutSet;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;

@@ -1,4 +1,4 @@
-package CaffeineGorilla.HPP_server.workout;
+package CaffeineGorilla.HPP_server.workout.mapper;
 
 import CaffeineGorilla.HPP_server.workout.model.Session;
 import org.mybatis.spring.SqlSessionTemplate;

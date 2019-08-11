@@ -1,6 +1,6 @@
 package CaffeineGorilla.HPP_server.workout.service;
 
-import CaffeineGorilla.HPP_server.workout.SessionDao;
+import CaffeineGorilla.HPP_server.workout.mapper.SessionDao;
 import CaffeineGorilla.HPP_server.workout.model.Session;
 import com.sun.istack.internal.Nullable;
 import org.apache.commons.lang3.RandomStringUtils;

@@ -1,7 +1,7 @@
 package workout;
 
 import CaffeineGorilla.HPP_server.workout.model.WorkoutSet;
-import CaffeineGorilla.HPP_server.workout.WorkoutSetDao;
+import CaffeineGorilla.HPP_server.workout.mapper.WorkoutSetDao;
 import CaffeineGorilla.HPP_server.workout.service.WorkoutSetServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
