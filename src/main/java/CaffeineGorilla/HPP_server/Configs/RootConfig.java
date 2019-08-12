@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -24,6 +25,7 @@ import java.io.IOException;
 @Configuration
 @PropertySource("classpath:properties/database.properties")
 @MapperScan("CaffeineGorilla.HPP_server.stat.mapper")
+@EnableJpaRepositories
 @EnableTransactionManagement
 public class RootConfig {
 
@@ -52,7 +54,7 @@ public class RootConfig {
         Resource[] res = new PathMatchingResourcePatternResolver()
                 .getResources("classpath:mappers/*-mapper.xml");
         sqlSessionFactoryBean.setMapperLocations(res);
-        sqlSessionFactoryBean.setTypeAliasesPackage("CaffeineGorilla.HPP_server.model");
+        sqlSessionFactoryBean.setTypeAliasesPackage("CaffeineGorilla.HPP_server");
 
         return sqlSessionFactoryBean;
     }

@@ -1,5 +1,9 @@
 package CaffeineGorilla.HPP_server.workout;
 
+import CaffeineGorilla.HPP_server.common.BaseResponse;
+import CaffeineGorilla.HPP_server.common.Constants;
+import CaffeineGorilla.HPP_server.workout.request.WorkoutRequest;
+import CaffeineGorilla.HPP_server.workout.request.WorkoutSetRequest;
 import CaffeineGorilla.HPP_server.workout.service.SessionService;
 import CaffeineGorilla.HPP_server.workout.service.UserSessionService;
 import CaffeineGorilla.HPP_server.workout.service.WorkoutSetService;
@@ -27,10 +31,14 @@ public class WorkoutSetController {
     UserSessionService userSessionService;
 
     @RequestMapping(method = RequestMethod.POST)
-    public WorkoutRequest.WorkoutSetRequest writeWorkoutSet(WorkoutRequest.WorkoutSetRequest workoutSetRequest){
+    public BaseResponse writeWorkoutSet(WorkoutSetRequest workoutSetRequest){
 
+        logger.info(workoutSetRequest.toString());
         workoutSetService.writeWorkoutSet(workoutSetRequest);
 
-        return workoutSetRequest;
+        BaseResponse baseResponse = BaseResponse.builder().message(Constants.RESPONSE_SUCCESS).build();
+
+        logger.info(baseResponse.getMessage());
+        return baseResponse;
     }
 }
