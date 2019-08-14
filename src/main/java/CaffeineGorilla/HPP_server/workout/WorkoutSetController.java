@@ -1,16 +1,15 @@
 package CaffeineGorilla.HPP_server.workout;
 
-import CaffeineGorilla.HPP_server.model.Session;
-import CaffeineGorilla.HPP_server.model.UserSession;
-import CaffeineGorilla.HPP_server.model.WorkoutSet;
+import CaffeineGorilla.HPP_server.common.BaseResponse;
+import CaffeineGorilla.HPP_server.common.Constants;
+import CaffeineGorilla.HPP_server.workout.request.WorkoutRequest;
+import CaffeineGorilla.HPP_server.workout.request.WorkoutSetRequest;
 import CaffeineGorilla.HPP_server.workout.service.SessionService;
 import CaffeineGorilla.HPP_server.workout.service.UserSessionService;
 import CaffeineGorilla.HPP_server.workout.service.WorkoutSetService;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,12 +31,14 @@ public class WorkoutSetController {
     UserSessionService userSessionService;
 
     @RequestMapping(method = RequestMethod.POST)
-    public WorkoutRequest.WorkoutSetRequest writeWorkoutSet(WorkoutRequest.WorkoutSetRequest workoutSetRequest){
-
-        workoutSetService.writeWorkoutSet(workoutSetRequest);
+    public BaseResponse writeWorkoutSet(WorkoutSetRequest workoutSetRequest){
 
         logger.info(workoutSetRequest.toString());
+        workoutSetService.writeWorkoutSet(workoutSetRequest);
 
-        return workoutSetRequest;
+        BaseResponse baseResponse = BaseResponse.builder().message(Constants.RESPONSE_SUCCESS).build();
+
+        logger.info(baseResponse.getMessage());
+        return baseResponse;
     }
 }

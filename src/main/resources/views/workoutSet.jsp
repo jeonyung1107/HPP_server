@@ -28,7 +28,7 @@
 <div class="container">
     <div class="jumbotron">
         <div class="form-group center-block" style="width: 300px">
-            <form id="workoutSetForm" name="workoutSetForm" method="post">
+            <form id="workoutSetForm" name="workoutSetForm">
                 <input class="form-control" type="text" name="excercise" placeholder="excercise"/>
                 <input class="form-control" type="text" name="intensity" placeholder="intensity"/>
                 <input class="form-control" type="text" name="numberof" placeholder="numberof"/>

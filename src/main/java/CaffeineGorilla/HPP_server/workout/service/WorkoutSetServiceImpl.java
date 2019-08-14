@@ -1,13 +1,12 @@
 package CaffeineGorilla.HPP_server.workout.service;
 
-import CaffeineGorilla.HPP_server.Service.WorkoutServiceImpl;
-import CaffeineGorilla.HPP_server.model.Session;
-import CaffeineGorilla.HPP_server.model.UserSession;
-import CaffeineGorilla.HPP_server.workout.SessionDao;
-import CaffeineGorilla.HPP_server.workout.UserSessionDao;
-import CaffeineGorilla.HPP_server.workout.WorkoutRequest;
-import CaffeineGorilla.HPP_server.workout.WorkoutSetDao;
-import CaffeineGorilla.HPP_server.model.WorkoutSet;
+import CaffeineGorilla.HPP_server.workout.model.Session;
+import CaffeineGorilla.HPP_server.workout.model.UserSession;
+import CaffeineGorilla.HPP_server.workout.mapper.UserSessionDao;
+import CaffeineGorilla.HPP_server.workout.request.WorkoutRequest;
+import CaffeineGorilla.HPP_server.workout.mapper.WorkoutSetDao;
+import CaffeineGorilla.HPP_server.workout.model.WorkoutSet;
+import CaffeineGorilla.HPP_server.workout.request.WorkoutSetRequest;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,7 +35,7 @@ public class WorkoutSetServiceImpl implements WorkoutSetService{
 
     @Override
     @Transactional
-    public void writeWorkoutSet(WorkoutRequest.WorkoutSetRequest workoutSetRequest) throws DataAccessException {
+    public void writeWorkoutSet(WorkoutSetRequest workoutSetRequest) throws DataAccessException {
 
         String userName = SecurityContextHolder.getContext().getAuthentication().getName();
         Session session = sessionService.getSession(workoutSetRequest.getSession());
@@ -49,7 +48,7 @@ public class WorkoutSetServiceImpl implements WorkoutSetService{
 
         WorkoutSet workoutSet = new WorkoutSet();
 
-        workoutSet.setId("test" + RandomStringUtils.randomAlphanumeric(6));
+        workoutSet.setId(RandomStringUtils.randomAlphanumeric(10));
         workoutSet.setExcercise(workoutSetRequest.getExcercise());
         workoutSet.setSession(session.getId());
         workoutSet.setIntensity(workoutSetRequest.getIntensity());
@@ -66,12 +65,12 @@ public class WorkoutSetServiceImpl implements WorkoutSetService{
     }
 
     @Override
-    public void modifyWorkoutSet(WorkoutRequest.WorkoutSetRequest workoutSet) {
+    public void modifyWorkoutSet(WorkoutSetRequest workoutSet) {
 
     }
 
     @Override
-    public void deleteWorkoutSet(WorkoutRequest.WorkoutSetRequest workoutSet) {
+    public void deleteWorkoutSet(WorkoutSetRequest workoutSet) {
 
     }
 }

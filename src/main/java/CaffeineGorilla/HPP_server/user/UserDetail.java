@@ -1,4 +1,4 @@
-package CaffeineGorilla.HPP_server.model;
+package CaffeineGorilla.HPP_server.user;
 
 import org.apache.ibatis.type.Alias;
 import org.springframework.security.core.GrantedAuthority;
