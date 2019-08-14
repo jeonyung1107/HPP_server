@@ -1,14 +1,9 @@
-package CaffeineGorilla.HPP_server.Service;
+package CaffeineGorilla.HPP_server.user;
 
-import CaffeineGorilla.HPP_server.DAO.UserDao;
-import CaffeineGorilla.HPP_server.model.UserDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-import java.sql.SQLException;
 
 public class UserDetailService implements UserService {
 

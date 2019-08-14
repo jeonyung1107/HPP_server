@@ -1,9 +1,8 @@
-package CaffeineGorilla.HPP_server.frontControllers;
+package CaffeineGorilla.HPP_server.user;
 
-import CaffeineGorilla.HPP_server.Service.UserService;
-import CaffeineGorilla.HPP_server.model.UserDetail;
+import CaffeineGorilla.HPP_server.user.UserService;
+import CaffeineGorilla.HPP_server.user.UserDetail;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

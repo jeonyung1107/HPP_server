@@ -1,8 +1,7 @@
 package CaffeineGorilla.HPP_server.workout.service;
 
-import CaffeineGorilla.HPP_server.model.Session;
+import CaffeineGorilla.HPP_server.workout.model.Session;
 import com.sun.istack.internal.Nullable;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 @Service

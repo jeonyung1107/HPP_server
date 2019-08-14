@@ -1,6 +1,6 @@
 package CaffeineGorilla.HPP_server.stat;
 
-import CaffeineGorilla.HPP_server.mapper.DayStatMapper;
+import CaffeineGorilla.HPP_server.stat.mapper.DayStatMapper;
 import CaffeineGorilla.HPP_server.stat.vo.DayIntensity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

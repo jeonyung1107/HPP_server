@@ -1,6 +1,6 @@
-package CaffeineGorilla.HPP_server.DAO;
+package CaffeineGorilla.HPP_server.user;
 
-import CaffeineGorilla.HPP_server.model.UserDetail;
+import CaffeineGorilla.HPP_server.user.UserDetail;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
