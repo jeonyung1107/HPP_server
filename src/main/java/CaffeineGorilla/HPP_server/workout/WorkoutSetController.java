@@ -36,9 +36,9 @@ public class WorkoutSetController {
         logger.info(workoutSetRequest.toString());
         workoutSetService.writeWorkoutSet(workoutSetRequest);
 
-        BaseResponse baseResponse = BaseResponse.builder().message(Constants.RESPONSE_SUCCESS).build();
+        BaseResponse baseResponse = WorkoutResponse.builder().message(Constants.RESPONSE_SUCCESS).build();
 
-        logger.info(baseResponse.getMessage());
+        logger.info(baseResponse.getMessage().toString());
         return baseResponse;
     }
 }

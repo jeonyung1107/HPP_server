@@ -1,10 +1,11 @@
 package CaffeineGorilla.HPP_server.workout.service;
 
+import CaffeineGorilla.HPP_server.Configs.RootConfig;
+import CaffeineGorilla.HPP_server.workout.mapper.UserSessionRepository;
+import CaffeineGorilla.HPP_server.workout.mapper.WorkoutSetRepository;
 import CaffeineGorilla.HPP_server.workout.model.Session;
 import CaffeineGorilla.HPP_server.workout.model.UserSession;
-import CaffeineGorilla.HPP_server.workout.mapper.UserSessionDao;
-import CaffeineGorilla.HPP_server.workout.request.WorkoutRequest;
-import CaffeineGorilla.HPP_server.workout.mapper.WorkoutSetDao;
+import CaffeineGorilla.HPP_server.workout.model.pk.UserSessionPk;
 import CaffeineGorilla.HPP_server.workout.model.WorkoutSet;
 import CaffeineGorilla.HPP_server.workout.request.WorkoutSetRequest;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -22,10 +23,7 @@ public class WorkoutSetServiceImpl implements WorkoutSetService{
     private static Logger logger = LoggerFactory.getLogger(WorkoutServiceImpl.class);
 
     @Autowired
-    WorkoutSetDao workoutSetDao;
-
-    @Autowired
-    UserSessionDao userSessionDao;
+    WorkoutSetRepository workoutSetRepositorysitory;
 
     @Autowired
     SessionService sessionService;
@@ -34,34 +32,33 @@ public class WorkoutSetServiceImpl implements WorkoutSetService{
     UserSessionService userSessionService;
 
     @Override
-    @Transactional
+    @Transactional(transactionManager = RootConfig.JPA_TRANSACTION_MANAGER)
     public void writeWorkoutSet(WorkoutSetRequest workoutSetRequest) throws DataAccessException {
 
         String userName = SecurityContextHolder.getContext().getAuthentication().getName();
         Session session = sessionService.getSession(workoutSetRequest.getSession());
 
         UserSession userSession = new UserSession();
-        userSession.setUser(userName);
-        userSession.setSession(session.getId());
+        userSession.setId(UserSessionPk.builder().user(userName).session(session.getId()).build());
 
         userSessionService.insertUserSession(userSession);
 
         WorkoutSet workoutSet = new WorkoutSet();
 
         workoutSet.setId(RandomStringUtils.randomAlphanumeric(10));
-        workoutSet.setExcercise(workoutSetRequest.getExcercise());
+        workoutSet.setWorkout(workoutSetRequest.getExcercise());
         workoutSet.setSession(session.getId());
         workoutSet.setIntensity(workoutSetRequest.getIntensity());
         workoutSet.setNumberof(workoutSetRequest.getNumberof());
 
         logger.info(workoutSet.toString());
 
-        workoutSetDao.insertWorkoutSet(workoutSet);
+        workoutSetRepositorysitory.save(workoutSet);
     }
 
     @Override
     public WorkoutSet getWorkoutSet(String id) {
-        return workoutSetDao.getWorkoutSet(id);
+        return workoutSetRepositorysitory.findById(id).get();
     }
 
     @Override

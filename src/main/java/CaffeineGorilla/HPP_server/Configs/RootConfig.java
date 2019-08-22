@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,6 +35,8 @@ import java.io.IOException;
 @EnableJpaRepositories(basePackages = "CaffeineGorilla.HPP_server")
 @EnableTransactionManagement
 public class RootConfig {
+
+    public static final String JPA_TRANSACTION_MANAGER = "jpaTransactionManager";
 
     @Autowired
     DataSource dataSource;
@@ -98,6 +101,7 @@ public class RootConfig {
     }
 
     @Bean
+    @Qualifier(JPA_TRANSACTION_MANAGER)
     public PlatformTransactionManager platformTransactionManager(EntityManagerFactory entityManagerFactory){
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory);

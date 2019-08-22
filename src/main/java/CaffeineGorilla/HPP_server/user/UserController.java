@@ -1,27 +1,35 @@
 package CaffeineGorilla.HPP_server.user;
 
+import CaffeineGorilla.HPP_server.common.BaseResponse;
+import CaffeineGorilla.HPP_server.common.Constants;
 import CaffeineGorilla.HPP_server.user.UserService;
 import CaffeineGorilla.HPP_server.user.UserDetail;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.Optional;
+
+@RestController
 @RequestMapping("/user")
 public class UserController {
 
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String userPage(){
-        return "user";
+    @GetMapping(value = "/{id}")
+    public BaseResponse userPage(@PathVariable String id){
+        UserDetails userDetails = userService.getUser(id);
+
+        BaseResponse response = UserResponse.builder()
+                .message(Constants.RESPONSE_SUCCESS).status(HttpStatus.OK).userDetails(userDetails).build();
+
+        return response;
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    @ResponseBody
+    @PostMapping(value = "/add")
     public String addUser(UserDetail userDetail){
 
         userDetail.setAuthority("ROLE_USER");
@@ -32,11 +40,12 @@ public class UserController {
         return "add success";
     }
 
-    @RequestMapping
-    @ResponseBody
-    public String deleteUser(UserDetail userDetail){
-        userService.deleteUser(userDetail);
+    @DeleteMapping("/{id}")
+    public BaseResponse deleteUser(@PathVariable String id){
+        userService.deleteUser(id);
+        BaseResponse response = UserResponse.builder().message(Constants.RESPONSE_SUCCESS)
+                .status(HttpStatus.OK).build();
 
-        return "delete succes";
+        return response;
     }
 }
