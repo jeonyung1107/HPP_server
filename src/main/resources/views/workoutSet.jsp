@@ -6,8 +6,8 @@
     <title>HPP</title>
     <link rel="stylesheet" href="/static/bootstrap-3.3.2-dist/css/bootstrap.min.css"/>
 
-    <script src="/static/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
     <script src="http://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script src="/static/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
     <script>
         function submitWorkoutSet() {
             var data = $("#workoutSetForm").serialize();

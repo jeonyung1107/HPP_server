@@ -1,7 +1,7 @@
 package CaffeineGorilla.HPP_server.workout.service;
 
 
-import CaffeineGorilla.HPP_server.workout.mapper.UserSessionDao;
+import CaffeineGorilla.HPP_server.workout.mapper.UserSessionRepository;
 import CaffeineGorilla.HPP_server.workout.model.UserSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class CacheUserSessionService implements UserSessionService {
 
     @Autowired
-    UserSessionDao userSessionDao;
+    UserSessionRepository repository;
 
     UserSession userSession;
 
@@ -20,7 +20,7 @@ public class CacheUserSessionService implements UserSessionService {
             return;
         }
 
-        userSessionDao.insertUserSession(userSession);
+        repository.save(userSession);
 
         this.userSession = userSession;
     }

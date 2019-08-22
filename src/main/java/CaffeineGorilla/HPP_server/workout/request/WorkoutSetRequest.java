@@ -1,11 +1,11 @@
 package CaffeineGorilla.HPP_server.workout.request;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class WorkoutSetRequest {
     private String id;
     private String session;

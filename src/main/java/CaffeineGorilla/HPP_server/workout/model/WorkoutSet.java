@@ -5,14 +5,21 @@ import lombok.Setter;
 import lombok.ToString;
 import org.apache.ibatis.type.Alias;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 @Alias("workoutSet")
 @Getter
 @Setter
 @ToString
+@Entity
+@Table(name = "workout_set")
 public class WorkoutSet {
+    @Id
     private String id;
     private String session;
-    private String excercise;
+    private String workout;
     private int intensity;
     private int numberof;
     private String writtentime;

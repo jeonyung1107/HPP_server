@@ -1,6 +1,6 @@
 package CaffeineGorilla.HPP_server.workout.service;
 
-import CaffeineGorilla.HPP_server.workout.mapper.SessionDao;
+import CaffeineGorilla.HPP_server.workout.mapper.SessionRepository;
 import CaffeineGorilla.HPP_server.workout.model.Session;
 import com.sun.istack.internal.Nullable;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -14,7 +14,7 @@ import java.util.Date;
 public class SpringSessionSessionService implements SessionService{
 
     @Autowired
-    SessionDao sessionDao;
+    SessionRepository repository;
 
     Session session;
 
@@ -26,7 +26,7 @@ public class SpringSessionSessionService implements SessionService{
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
             session.setId(simpleDateFormat.format(date).toString() + "test" + RandomStringUtils.randomAlphanumeric(4));
 
-            sessionDao.insertSession(session);
+            repository.save(session);
         }
 
         return session;
@@ -44,6 +44,6 @@ public class SpringSessionSessionService implements SessionService{
 
     @Override
     public void deleteSession(String id) {
-
+        repository.deleteById(id);
     }
 }

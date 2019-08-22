@@ -17,7 +17,6 @@ import javax.persistence.Table;
 public class Workout {
     @Id
     private String id;
-    @Column
     private String name;
     private String muscle;
     private String unit;

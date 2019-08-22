@@ -10,7 +10,7 @@ import java.util.Optional;
 public class UserDetailService implements UserService {
 
     @Autowired
-    UserDao userDao;
+    UserRepository userRepository;
 
     @Autowired
     BCryptPasswordEncoder passwordEncoder;
@@ -22,7 +22,7 @@ public class UserDetailService implements UserService {
 
     @Override
     public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
-        Optional<UserDetail> userDetail = userDao.findById(id);
+        Optional<UserDetail> userDetail = userRepository.findById(id);
 
         return userDetail.orElseThrow(() -> new UsernameNotFoundException(id));
     }
@@ -34,12 +34,12 @@ public class UserDetailService implements UserService {
         String encryptedPassword = passwordEncoder.encode(password);
         userDetail.setPassword(encryptedPassword);
 
-        userDao.save(userDetail);
+        userRepository.save(userDetail);
     }
 
     @Override
     public void deleteUser(String id){
-        userDao.deleteById(id);
+        userRepository.deleteById(id);
     }
 }
 

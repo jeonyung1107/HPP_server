@@ -4,10 +4,17 @@ import lombok.Getter;
 import lombok.Setter;
 import org.apache.ibatis.type.Alias;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 @Alias("muscle")
 @Getter
 @Setter
+@Entity
+@Table(name = "muscle")
 public class Muscle {
+    @Id
     private String id;
     private String Name;
     private String parent;

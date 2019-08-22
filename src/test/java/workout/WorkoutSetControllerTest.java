@@ -1,7 +1,7 @@
 package workout;
 
+import CaffeineGorilla.HPP_server.workout.mapper.WorkoutSetRepository;
 import CaffeineGorilla.HPP_server.workout.model.WorkoutSet;
-import CaffeineGorilla.HPP_server.workout.mapper.WorkoutSetDao;
 import CaffeineGorilla.HPP_server.workout.service.WorkoutSetServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -20,7 +20,7 @@ public class WorkoutSetControllerTest {
     WorkoutSetServiceImpl workoutSetService;
 
     @Mock
-    WorkoutSetDao workoutSetDao;
+    WorkoutSetRepository repository;
 
     @BeforeAll
     static void initAll(){
@@ -33,13 +33,13 @@ public class WorkoutSetControllerTest {
     @DisplayName("work")
     void writeWorkoutSetTest(){
         WorkoutSet expected = new WorkoutSet();
-        expected.setExcercise("testtest01");
+        expected.setWorkout("testtest01");
         expected.setId("testId");
 
-        Mockito.when(workoutSetDao.getWorkoutSet("test2r9mEt")).thenReturn(expected);
+        Mockito.when(repository.findById("test2r9mEt").get()).thenReturn(expected);
 
         WorkoutSet workoutSet = workoutSetService.getWorkoutSet("test2r9mEt");
 
-        Assertions.assertEquals("testtest01",workoutSet.getExcercise());
+        Assertions.assertEquals("testtest01",workoutSet.getWorkout());
     }
 }
