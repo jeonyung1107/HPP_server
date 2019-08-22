@@ -9,6 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -26,17 +27,19 @@ public class WorkoutController {
     public BaseResponse addWorkout(@RequestBody(required = true) WorkoutRequest request){
         logger.info(request.toString());
         workoutService.insert(modelMapper.map(request, Workout.class));
-        BaseResponse response = BaseResponse.builder().message(Constants.RESPONSE_SUCCESS).build();
+        BaseResponse response = WorkoutResponse.builder().message(Constants.RESPONSE_SUCCESS).build();
         logger.info(response.toString());
 
         return response;
     }
 
     @GetMapping("/{id}")
-    public Workout getWorkout(@PathVariable String id){
+    public BaseResponse getWorkout(@PathVariable String id){
         logger.info(id);
         Workout result = workoutService.get(id).get();
 
-        return result;
+        BaseResponse response = WorkoutResponse.builder()
+                .status(HttpStatus.OK).message(Constants.RESPONSE_SUCCESS).workout(result).build();
+        return response;
     }
 }

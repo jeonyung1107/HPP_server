@@ -1,25 +1,6 @@
 package CaffeineGorilla.HPP_server.user;
 
-import CaffeineGorilla.HPP_server.user.UserDetail;
-import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public class UserDao {
-
-    @Autowired
-    SqlSessionTemplate sqlSessionTemplate;
-
-    public UserDetail getUserById(String id){
-        return sqlSessionTemplate.selectOne("user.get", id);
-    }
-
-    public void insertUser(UserDetail userDetail){
-        sqlSessionTemplate.insert("user.insert", userDetail);
-    }
-
-    public void deleteUser(UserDetail userDetail){
-        sqlSessionTemplate.delete("user.delete", userDetail);
-    }
+public interface UserDao extends JpaRepository<UserDetail, String> {
 }

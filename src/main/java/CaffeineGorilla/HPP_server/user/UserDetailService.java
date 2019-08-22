@@ -5,6 +5,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.util.Optional;
+
 public class UserDetailService implements UserService {
 
     @Autowired
@@ -14,13 +16,15 @@ public class UserDetailService implements UserService {
     BCryptPasswordEncoder passwordEncoder;
 
     @Override
-    public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
-        UserDetail userDetail = userDao.getUserById(id);
-        if(null == userDetail){
-            throw new UsernameNotFoundException("user" + id + "does not exist");
-        }
+    public UserDetails getUser(String id) throws UsernameNotFoundException {
+        return loadUserByUsername(id);
+    }
 
-        return userDetail;
+    @Override
+    public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
+        Optional<UserDetail> userDetail = userDao.findById(id);
+
+        return userDetail.orElseThrow(() -> new UsernameNotFoundException(id));
     }
 
     @Override
@@ -30,12 +34,12 @@ public class UserDetailService implements UserService {
         String encryptedPassword = passwordEncoder.encode(password);
         userDetail.setPassword(encryptedPassword);
 
-        userDao.insertUser(userDetail);
+        userDao.save(userDetail);
     }
 
     @Override
-    public void deleteUser(UserDetail userDetail){
-        userDao.deleteUser(userDetail);
+    public void deleteUser(String id){
+        userDao.deleteById(id);
     }
 }
 

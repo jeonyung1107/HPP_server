@@ -22,11 +22,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new UserDetailService();
     }
 
-    @Bean
-    public UserDao userDao(){
-        return new UserDao();
-    }
-
     @Override
     protected UserDetailsService userDetailsService() {
         return super.userDetailsService();

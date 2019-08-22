@@ -29,4 +29,9 @@ public class FrontController {
     public String workoutSet(){
         return "workoutSet";
     }
+
+    @GetMapping(value = "/user")
+    public String addUserPage(){
+        return "user";
+    }
 }
