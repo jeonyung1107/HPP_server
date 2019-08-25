@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Alias("workoutSet")
 @Getter
 @Setter
 @ToString
